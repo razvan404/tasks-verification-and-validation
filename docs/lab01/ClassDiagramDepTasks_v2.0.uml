@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Git/tasks-verification-and-validation/src/main/java/tasks/model</OriginalElement>
+  <nodes>
+    <node x="308.5" y="2034.5">tasks.model.TaskList</node>
+    <node x="-19.0" y="3211.0">tasks.services.DateService</node>
+    <node x="-101.0" y="2083.0">tasks.model.ArrayTaskList.ArrayTaskListIterator</node>
+    <node x="114.0" y="903.0">tasks.model.LinkedTaskList.LinkedTaskListIterator</node>
+    <node x="38.0" y="1579.0">tasks.services.TaskIO</node>
+    <node x="179.5" y="2395.0">tasks.model.TasksOperations</node>
+    <node x="-34.5" y="2538.5">tasks.model.ArrayTaskList</node>
+    <node x="325.5" y="1158.5">tasks.model.LinkedTaskList</node>
+    <node x="382.5" y="666.5">tasks.model.LinkedTaskList.Node</node>
+    <node x="1.5" y="2938.5">tasks.services.TasksService</node>
+    <node x="27.0" y="-14.0">tasks.model.Task</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="tasks.model.LinkedTaskList" target="tasks.model.LinkedTaskList.LinkedTaskListIterator" relationship="CREATE">
+      <point x="-67.0" y="-152.5" />
+      <point x="359.0" y="1131.0" />
+      <point x="366.0" y="1131.0" />
+      <point x="366.0" y="1091.0" />
+      <point x="170.0" y="1091.0" />
+      <point x="-56.0" y="68.0" />
+    </edge>
+    <edge source="tasks.model.TaskList" target="tasks.model.LinkedTaskList" relationship="CREATE">
+      <point x="-58.75" y="-116.5" />
+      <point x="367.25" y="2011.0" />
+      <point x="366.0" y="2011.0" />
+      <point x="366.0" y="1491.0" />
+      <point x="375.75" y="1491.0" />
+      <point x="-50.25" y="152.5" />
+    </edge>
+    <edge source="tasks.model.TaskList" target="tasks.model.ArrayTaskList" relationship="CREATE">
+      <point x="-58.75" y="116.5" />
+      <point x="367.25" y="2311.0" />
+      <point x="66.0" y="2311.0" />
+      <point x="0.0" y="-152.5" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList" target="tasks.model.ArrayTaskList.ArrayTaskListIterator" relationship="CREATE">
+      <point x="-80.39999999999998" y="-152.5" />
+      <point x="-14.399999999999977" y="2511.0" />
+      <point x="-54.0" y="2511.0" />
+      <point x="-54.0" y="2251.0" />
+      <point x="-47.5" y="2251.0" />
+      <point x="-53.5" y="68.0" />
+    </edge>
+    <edge source="tasks.services.TaskIO" target="tasks.model.Task" relationship="CREATE">
+      <point x="0.0" y="-212.0" />
+      <point x="186.0" y="1551.0" />
+      <point x="86.0" y="1551.0" />
+      <point x="86.0" y="591.0" />
+      <point x="86.5" y="591.0" />
+      <point x="-59.5" y="285.0" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList.Node" target="tasks.model.LinkedTaskList" relationship="INNER_CLASS">
+      <point x="0.0" y="104.5" />
+      <point x="466.0" y="1071.0" />
+      <point x="426.0" y="1071.0" />
+      <point x="0.0" y="-152.5" />
+    </edge>
+    <edge source="tasks.services.DateService" target="tasks.services.TasksService" relationship="TO_ONE">
+      <point x="0.0" y="-80.0" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList" target="tasks.model.TaskList" relationship="GENERALIZATION">
+      <point x="40.199999999999996" y="-152.5" />
+      <point x="106.19999999999999" y="2331.0" />
+      <point x="484.75" y="2331.0" />
+      <point x="58.75" y="116.5" />
+    </edge>
+    <edge source="tasks.model.TasksOperations" target="tasks.model.Task" relationship="TO_MANY">
+      <point x="0.0" y="-56.0" />
+      <point x="366.0" y="2371.0" />
+      <point x="606.0" y="2371.0" />
+      <point x="606.0" y="631.0" />
+      <point x="566.0" y="631.0" />
+      <point x="566.0" y="591.0" />
+      <point x="205.5" y="591.0" />
+      <point x="59.5" y="285.0" />
+    </edge>
+    <edge source="tasks.services.TasksService" target="tasks.model.ArrayTaskList" relationship="TO_ONE">
+      <point x="-72.25" y="-92.5" />
+      <point x="73.75" y="2911.0" />
+      <point x="66.0" y="2911.0" />
+      <point x="0.0" y="152.5" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList" target="tasks.model.LinkedTaskList.Node" relationship="CREATE">
+      <point x="-67.0" y="-152.5" />
+      <point x="359.0" y="1131.0" />
+      <point x="366.0" y="1131.0" />
+      <point x="366.0" y="1091.0" />
+      <point x="410.33333333333337" y="1091.0" />
+      <point x="-55.66666666666667" y="104.5" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList" target="tasks.model.TaskList" relationship="GENERALIZATION">
+      <point x="50.25" y="152.5" />
+      <point x="476.25" y="2011.0" />
+      <point x="484.75" y="2011.0" />
+      <point x="58.75" y="-116.5" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList" target="tasks.model.Task" relationship="CREATE">
+      <point x="-80.39999999999998" y="-152.5" />
+      <point x="-14.399999999999977" y="2511.0" />
+      <point x="-54.0" y="2511.0" />
+      <point x="-54.0" y="2251.0" />
+      <point x="-134.0" y="2251.0" />
+      <point x="-134.0" y="951.0" />
+      <point x="86.0" y="951.0" />
+      <point x="86.0" y="591.0" />
+      <point x="86.5" y="591.0" />
+      <point x="-59.5" y="285.0" />
+    </edge>
+    <edge source="tasks.services.TasksService" target="tasks.model.TasksOperations" relationship="CREATE">
+      <point x="72.25" y="-92.5" />
+      <point x="218.25" y="2911.0" />
+      <point x="366.0" y="2911.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList" target="tasks.model.LinkedTaskList.Node" relationship="TO_ONE">
+      <point x="67.0" y="-152.5" />
+      <point x="493.0" y="1131.0" />
+      <point x="521.6666666666667" y="1131.0" />
+      <point x="55.666666666666686" y="104.5" />
+    </edge>
+    <edge source="tasks.services.TaskIO" target="tasks.model.LinkedTaskList" relationship="CREATE">
+      <point x="0.0" y="-212.0" />
+      <point x="186.0" y="1531.0" />
+      <point x="366.0" y="1531.0" />
+      <point x="366.0" y="1491.0" />
+      <point x="375.75" y="1491.0" />
+      <point x="-50.25" y="152.5" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList" target="tasks.model.Task" relationship="TO_MANY">
+      <point x="80.4" y="-152.5" />
+      <point x="146.39999999999998" y="2351.0" />
+      <point x="566.0" y="2351.0" />
+      <point x="566.0" y="591.0" />
+      <point x="205.5" y="591.0" />
+      <point x="59.5" y="285.0" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList.LinkedTaskListIterator" target="tasks.model.LinkedTaskList" relationship="INNER_CLASS">
+      <point x="56.0" y="68.0" />
+      <point x="282.0" y="1071.0" />
+      <point x="426.0" y="1071.0" />
+      <point x="0.0" y="-152.5" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList.Node" target="tasks.model.Task" relationship="TO_ONE">
+      <point x="0.0" y="-104.5" />
+      <point x="466.0" y="631.0" />
+      <point x="566.0" y="631.0" />
+      <point x="566.0" y="591.0" />
+      <point x="205.5" y="591.0" />
+      <point x="59.5" y="285.0" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList.ArrayTaskListIterator" target="tasks.model.ArrayTaskList" relationship="INNER_CLASS">
+      <point x="53.5" y="68.0" />
+      <point x="59.5" y="2291.0" />
+      <point x="25.80000000000001" y="2291.0" />
+      <point x="-40.19999999999999" y="-152.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.26226138032305435" showDependencies="true" x="246.0" y="1688.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

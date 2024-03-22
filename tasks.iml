@@ -36,4 +36,7 @@
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.0.1" level="project" />
   </component>
-</module> 
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="5691ba5c-8ce2-4bae-aa64-09b30abac909" />
+  </component>
+</module>

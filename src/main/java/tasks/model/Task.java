@@ -109,51 +109,45 @@ public class Task implements Serializable, Cloneable
         return !(this.interval == 0);
     }
 
-    public Date nextTimeAfter(Date current)
-    {
-        if (current.after(end) || current.equals(end))
-        {
+    private boolean isDateValid(Date current) {
+        return !(current.equals(end) || current.after(end) || !isActive());
+    }
+
+    private Date loopDates(Date current) {
+        Date timeBefore = start;
+        Date timeAfter = start;
+        for (long i = start.getTime(); i <= end.getTime(); i += interval * 1000L) {
+            if (current.equals(timeAfter)) {
+                return new Date(timeAfter.getTime() + interval * 1000L);
+            }
+
+            if (current.after(timeBefore) && current.before(timeAfter)) {
+                return timeAfter;
+            }
+
+            timeBefore = timeAfter;
+            timeAfter = new Date(timeAfter.getTime() + interval * 1000L);
+        }
+        return null;
+    }
+
+    public Date nextTimeAfter(Date current) {
+        if (!isDateValid(current)) {
             return null;
         }
 
-        if (!isActive())
-        {
-            return null;
-        }
-
-        if (isRepeated())
-        {
-            if (current.before(start))
-            {
+        if (isRepeated()) {
+            if (current.before(start)) {
                 return start;
             }
-
-            Date timeBefore = start;
-            Date timeAfter = start;
-            for (long i = start.getTime(); i <= end.getTime(); i += interval * 1000L)
-            {
-                if (current.equals(timeAfter))
-                {
-                    return new Date(timeAfter.getTime() + interval * 1000L);
-                }
-
-                if (current.after(timeBefore) && current.before(timeAfter))
-                {
-                    return timeAfter;
-                }
-
-                timeBefore = timeAfter;
-                timeAfter = new Date(timeAfter.getTime() + interval * 1000L);
-            }
-        }
-
-        if (!isRepeated() && current.before(time))
-        {
+            return loopDates(current);
+        } else if (current.before(time)) {
             return time;
         }
 
         return null;
     }
+
 
     //duplicate methods for TableView which sets column
     // value by single method and doesn't allow passing parameters
