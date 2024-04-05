@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
+import tasks.services.dto.TaskDTO;
 import tasks.model.Task;
 import tasks.services.DateService;
 import tasks.services.TaskIO;
@@ -141,21 +142,14 @@ public class NewEditController {
 
     @FXML
     public void saveChanges(){
-        Task collectedFieldsTask = collectFieldsData();
+        TaskDTO collectedFieldsTask = collectFieldsData();
         if (incorrectInputMade) return;
-
-        if (currentTask == null){//no task was chosen -> add button was pressed
-            tasksList.add(collectedFieldsTask);
-        }
-        else {
-            for (int i = 0; i < tasksList.size(); i++){
-                if (currentTask.equals(tasksList.get(i))){
-                    tasksList.set(i,collectedFieldsTask);
-                }
-            }
+        if (currentTask != null) {
+            TaskIO.updateTask(collectedFieldsTask, currentTask, tasksList);
             currentTask = null;
+        } else {
+            TaskIO.insertTask(collectedFieldsTask, tasksList);
         }
-        TaskIO.rewriteFile(tasksList);
         GlobalController.editNewStage.close();
     }
     @FXML
@@ -163,9 +157,9 @@ public class NewEditController {
         GlobalController.editNewStage.close();
     }
 
-    private Task collectFieldsData(){
+    private TaskDTO collectFieldsData(){
         incorrectInputMade = false;
-        Task result = null;
+        TaskDTO result = null;
         try {
             result = makeTask();
         }
@@ -186,23 +180,19 @@ public class NewEditController {
         return result;
     }
 
-    private Task makeTask(){
-        Task result;
+    private TaskDTO makeTask(){
         String newTitle = fieldTitle.getText();
         Date startDateWithNoTime = dateService.getDateValueFromLocalDate(datePickerStart.getValue());//ONLY date!!without time
         Date newStartDate = dateService.getDateMergedWithTime(txtFieldTimeStart.getText(), startDateWithNoTime);
+        Date newEndDate = null;
+        Integer newInterval = null;
+        boolean isActive = checkBoxActive.isSelected();
         if (checkBoxRepeated.isSelected()){
             Date endDateWithNoTime = dateService.getDateValueFromLocalDate(datePickerEnd.getValue());
-            Date newEndDate = dateService.getDateMergedWithTime(txtFieldTimeEnd.getText(), endDateWithNoTime);
-            int newInterval = service.parseFromStringToSeconds(fieldInterval.getText());
-            if (newStartDate.after(newEndDate)) throw new IllegalArgumentException("Start date should be before end");
-            result = new Task(newTitle, newStartDate,newEndDate, newInterval);
+            newEndDate = dateService.getDateMergedWithTime(txtFieldTimeEnd.getText(), endDateWithNoTime);
+            newInterval = service.parseFromStringToSeconds(fieldInterval.getText());
         }
-        else {
-            result = new Task(newTitle, newStartDate);
-        }
-        boolean isActive = checkBoxActive.isSelected();
-        result.setActive(isActive);
+        TaskDTO result = new TaskDTO(newTitle, newStartDate, newEndDate, newInterval, isActive);
         System.out.println(result);
         return result;
     }
