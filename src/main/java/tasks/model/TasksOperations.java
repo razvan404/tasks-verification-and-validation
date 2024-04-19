@@ -20,13 +20,13 @@ public class TasksOperations
         System.out.println(end);
 
         ArrayList<Task> incomingTasks = new ArrayList<>();
-        for (Task task : tasks)
-        {
-            Date nextTime = task.nextTimeAfter(start);
-            if (nextTime != null && (nextTime.before(end) || nextTime.equals(end)))
-            {
-                incomingTasks.add(task);
-                System.out.println(task.getTitle());
+        if (!end.before(start)) {
+            for (Task task : tasks) {
+                Date nextTime = task.nextTimeAfter(start);
+                if (nextTime != null && (nextTime.before(end) || nextTime.equals(end))) {
+                    incomingTasks.add(task);
+                    System.out.println(task.getTitle());
+                }
             }
         }
 
