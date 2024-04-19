@@ -121,12 +121,21 @@ class TasksOperationsTest {
                 30
         );
         t1.setActive(true);
+        Task t2 = new Task(
+                "mock title",
+                sdf.parse("2024-04-04 12:00"),
+                sdf.parse("2024-04-06 12:00"),
+                30
+        );
+        t2.setActive(true);
         tasksOps.getTasks().add(t1);
+        tasksOps.getTasks().add(t2);
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-04 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
         List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
-        assertEquals(1, filtered.size());
+        assertEquals(2, filtered.size());
         assertEquals(filtered.get(0), t1);
+        assertEquals(filtered.get(1), t2);
     }
 }

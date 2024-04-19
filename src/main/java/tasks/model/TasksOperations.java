@@ -23,9 +23,11 @@ public class TasksOperations
         if (!end.before(start)) {
             for (Task task : tasks) {
                 Date nextTime = task.nextTimeAfter(start);
-                if (nextTime != null && (nextTime.before(end) || nextTime.equals(end))) {
-                    incomingTasks.add(task);
-                    System.out.println(task.getTitle());
+                if (nextTime != null) {
+                    if ((nextTime.before(end) || nextTime.equals(end))) {
+                        incomingTasks.add(task);
+                        System.out.println(task.getTitle());
+                    }
                 }
             }
         }
