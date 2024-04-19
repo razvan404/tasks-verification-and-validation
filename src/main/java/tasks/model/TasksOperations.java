@@ -59,4 +59,8 @@ public class TasksOperations
 
         return calendar;
     }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
 }
