@@ -16,9 +16,6 @@ public class TasksOperations
 
     public Iterable<Task> incoming(Date start, Date end)
     {
-        System.out.println(start);
-        System.out.println(end);
-
         ArrayList<Task> incomingTasks = new ArrayList<>();
         if (!end.before(start)) {
             for (Task task : tasks) {
