@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +43,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-01 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());;
         assertEquals(0, filtered.size());
     }
 
@@ -52,7 +53,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-01 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());
         assertEquals(0, filtered.size());
     }
 
@@ -70,7 +71,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-03 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());
         assertEquals(0, filtered.size());
     }
 
@@ -88,7 +89,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-03 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());
         assertEquals(0, filtered.size());
     }
 
@@ -106,7 +107,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-04 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());
         assertEquals(1, filtered.size());
         assertEquals(filtered.get(0), t1);
     }
@@ -133,7 +134,7 @@ class TasksOperationsTest {
         Date start = sdf.parse("2024-04-02 12:00");
         Date end = sdf.parse("2024-04-04 12:00");
         Iterable<Task> tasks = tasksOps.incoming(start, end);
-        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).toList();
+        List<Task> filtered = StreamSupport.stream(tasks.spliterator(),false).collect(Collectors.toList());
         assertEquals(2, filtered.size());
         assertEquals(filtered.get(0), t1);
         assertEquals(filtered.get(1), t2);

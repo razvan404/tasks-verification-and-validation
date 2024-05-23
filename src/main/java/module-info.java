@@ -1,4 +1,5 @@
 module tasks {
+    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
@@ -11,4 +12,6 @@ module tasks {
     exports tasks.view;
     opens tasks.controller to javafx.fxml;
     exports tasks.controller;
+    opens tasks.services to javafx.fxml;
+    exports tasks.services;
 }
